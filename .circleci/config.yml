@@ -15,6 +15,7 @@ jobs:
       - node/install:
           node-version: '14.15'         
       - checkout
+      - aws-cli/setup
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
@@ -24,26 +25,23 @@ jobs:
             echo "NPM --version" 
             echo $(npm --version)
             npm run frontend:install
-      # TODO: Install dependencies in the the backend API          
-      - run:
-          name: Install API Dependencies
+      # TODO: Install dependencies in the the backend API      
+      - run: 
+          name: install packages in back-end
           command: |
-           echo "TODO: Install dependencies in the the backend API  "
-      # TODO: Lint the frontend
-      - run:
-          name: Front-End Lint
+            npm run api:install 
+
+      - run: 
+          name: build back-end
           command: |
-            echo "TODO: Lint the frontend"
+            npm run api:build             
+
+                
       # TODO: Build the frontend app
-      - run:
-          name: Front-End Build
+      - run: 
+          name: build front-end
           command: |
-            echo "TODO: Build the frontend app"
-      # TODO: Build the backend API      
-      - run:
-          name: API Build
-          command: |
-            echo "TODO: Build the backend API"
+            npm run front-end:build             
   # deploy step will run only after manual approval
   deploy:
     docker:
@@ -59,8 +57,10 @@ jobs:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
           command: |
-            echo "# TODO: Install, build, deploy in both apps"
-            
+            npm run deploy
+
+
+
 workflows:
   udagram:
     jobs:
