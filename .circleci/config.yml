@@ -41,7 +41,17 @@ jobs:
       - run: 
           name: build back-end
           command: |
-            npm run api:build             
+            npm run api:build  
+            
+      - run: 
+          name: deploy api App
+          command: |
+            npm run api:deploy
+
+      - run: 
+          name: deploy frontend App
+          command: |
+            npm run frontend:deploy                                     
   # deploy step will run only after manual approval
   deploy:
     docker:
