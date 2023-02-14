@@ -42,7 +42,21 @@ jobs:
           name: build back-end
           command: |
             npm run api:build  
-            
+
+      - run: 
+          name: installing the pip
+          command: |
+            sudo apt update
+            sudo apt install -y python3-pip python-dev    
+
+      - run: 
+          name: installing  aws
+          command: |
+            sudo pip install awscli
+      - run: 
+          name: installing  eb
+          command: |
+            sudo pip install awsebcli            
       - run: 
           name: deploy api App
           command: |
