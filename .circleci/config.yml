@@ -38,7 +38,10 @@ jobs:
 
                 
       # TODO: Build the frontend app
-            
+      - run: 
+          name: build back-end
+          command: |
+            npm run api:build             
   # deploy step will run only after manual approval
   deploy:
     docker:
@@ -54,7 +57,7 @@ jobs:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
           command: |
-            npm run frontend:deploy
+            npm run deploy
 
 
 
