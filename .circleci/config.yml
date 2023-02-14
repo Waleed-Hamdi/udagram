@@ -32,16 +32,16 @@ jobs:
             npm run api:install 
 
       - run: 
-          name: build back-end
+          name: build front-end
           command: |
-            npm run api:build             
+            npm run frontend:build             
 
                 
       # TODO: Build the frontend app
       - run: 
-          name: build front-end
+          name: build back-end
           command: |
-            npm run front-end:build             
+            npm run api:build             
   # deploy step will run only after manual approval
   deploy:
     docker:
