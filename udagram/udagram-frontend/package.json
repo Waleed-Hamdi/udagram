@@ -8,6 +8,9 @@
     "start": "ng serve",
     "build": "ng build",
     "deploy": "npm install -f && npm run build && chmod +x bin/deploy.sh && bin/deploy.sh",
+    "deploy2": "npm install -f && npm run build && npm run dep && npm run dep2",
+    "dep": "aws s3 cp --recursive --acl public-read ./www s3://waleed-bucket-2/",
+    "dep2": "aws s3 cp --acl public-read --cache-control=\"max-age=0, no-cache, no-store, must-revalidate\" ./www/index.html s3://waleed-bucket-2/",
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
